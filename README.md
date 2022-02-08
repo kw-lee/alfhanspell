@@ -13,6 +13,14 @@ Usage
 --------------
 * `nsc`를 입력
 
+Requirements
+--------------
+
+```bash
+git submodule update --init --recursive
+pip install -r requirements.txt -t workflow
+```
+
 LICENSE
 --------------
  - MIT
