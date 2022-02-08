@@ -68,7 +68,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Naver Spellchecking for {query}</string>
+				<string>Spellchecking for {query}</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
