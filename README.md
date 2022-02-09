@@ -38,3 +38,10 @@ LICENSE
 --------------
  - MIT
  - except for requests library (Apache License 2.0)
+
+
+Changelog
+--------------
+
+- `v0.0.1`: the first release
+- `v0.0.2`: improving ui and trying to find python3 path
