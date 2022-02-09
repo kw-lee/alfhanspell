@@ -11,7 +11,9 @@ Install workflow
 
 Usage
 --------------
-* `nsc`를 입력
+* `nsc {query}` {query} 자리에 원하는 문장을 입력하면 맞춤법 수정 결과와 원본 텍스트를 복사하실 수 있습니다.
+
+![](./nsc_test.gif)
 
 Build
 --------------
