@@ -32,3 +32,4 @@ pip install -r requirements.txt -t workflow/lib
 LICENSE
 --------------
  - MIT
+ - except for requests library (Apache License 2.0)
