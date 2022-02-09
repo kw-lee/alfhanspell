@@ -42,14 +42,14 @@ def main(wf):
     out = f"{res_json['checked']}"
 
     wf.add_item(
-        title="맞춤법 수정 결과 복사",
-        subtitle=out,
+        title=out,
+        subtitle="맞춤법 수정 결과 복사",
         arg=out,
         autocomplete=out,
         valid=True)
 
-    wf.add_item(title="원본 텍스트 복사",
-            subtitle=args,
+    wf.add_item(title=args,
+            subtitle="원본 텍스트 복사",
             autocomplete=args,
             arg=args,
             valid=True)
