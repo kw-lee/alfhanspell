@@ -24,6 +24,11 @@ bash ./make.sh
 Requirements
 --------------
 
+* python3
+  * [py-hanspell](https://github.com/ssut/py-hanspell.git)
+  * [alfred-workflow-py3](https://github.com/kw-lee/alfred-workflow-py3.git)
+  * requirements.txt
+
 ```bash
 git submodule update --init --recursive
 pip install -r requirements.txt -t workflow/lib

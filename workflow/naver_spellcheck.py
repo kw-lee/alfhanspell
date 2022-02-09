@@ -22,9 +22,8 @@
 
 import sys
 sys.path.append("lib")
-import json
 
-from workflow import web, Workflow3
+from workflow import Workflow3
 from hanspell_break import check
 
 def get_spell_check_data(sent):
