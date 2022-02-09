@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.naversc.alfred</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>C9190800-AC01-471F-8865-8E7E7444E61D</key>
@@ -60,7 +58,7 @@
 				<key>runningsubtext</key>
 				<string>Loading...</string>
 				<key>script</key>
-				<string>/usr/bin/env python3 naver_spellcheck.py "{query}"</string>
+				<string>python3 naver_spellcheck.py "{query}" || /usr/bin/python3 naver_spellcheck.py "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -123,6 +121,6 @@
 	<key>version</key>
 	<string>0.0.1</string>
 	<key>webaddress</key>
-	<string>https://github.com/kw-lee</string>
+	<string>https://github.com/kw-lee/alfhanspell</string>
 </dict>
 </plist>
