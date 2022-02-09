@@ -1,2 +1,5 @@
-__pychache__
+__pycache__
 workflow/lib/*
+*.spec
+build
+dist
