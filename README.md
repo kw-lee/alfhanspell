@@ -43,5 +43,6 @@ LICENSE
 Changelog
 --------------
 
-- `v0.0.1`: the first release
-- `v0.0.2`: improving ui and trying to find python3 path
+- `v0.0.1`: 공개
+- `v0.0.2`: UI 개선 및 파이썬 경로 수정
+- `v0.0.3`: 공백 문자 입력 강제를 통한 안정성 향상
