@@ -43,7 +43,7 @@ def main(wf):
     end_mark = re.search('\s+$', args)
     if end_mark:
         res_json = get_spell_check_data(args)
-        out = f"{res_json['checked']}"
+        out = f"{res_json['checked']}".rstrip()
 
         wf.add_item(
             title=out,
