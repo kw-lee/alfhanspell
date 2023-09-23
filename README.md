@@ -25,12 +25,12 @@ Requirements
 --------------
 
 * python3
-  * [py-hanspell](https://github.com/ssut/py-hanspell.git)
   * [alfred-pyworkflow](https://github.com/harrtho/alfred-pyworkflow.git)
   * requirements.txt
 
 ```bash
 git submodule update --init --recursive
+git submodule foreach git checkout origin/HEAD 
 pip install -r requirements.txt -t workflow/lib
 ```
 
@@ -38,7 +38,7 @@ LICENSE
 --------------
  - MIT
  - except for requests library (Apache License 2.0)
-
+ - 맞춤법 검사 모듈은 [py-hanspell](https://github.com/ssut/py-hanspell.git)을 변형하여 사용하였습니다.
 
 Changelog
 --------------
@@ -49,3 +49,4 @@ Changelog
 - `v0.0.4`: 맞춤법 검사 url 변경
 - `v0.0.5`: 맞춤법 검사 결과 공백문자 제거
 - `v0.0.6`: `passportKey`가 필요한 문제 임시 해결, `python3` 라이브러리 변경
+- `v0.0.7`: 맞춤법 검사 모듈 경량화, 배포 자동화

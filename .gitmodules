@@ -1,6 +1,3 @@
-[submodule "py-hanspell"]
-	path = py-hanspell
-	url = https://github.com/ssut/py-hanspell.git
 [submodule "alfred-pyworkflow"]
 	path = alfred-pyworkflow
 	url = https://github.com/harrtho/alfred-pyworkflow.git

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# Naver Search Workflow for Alfred 4
+# Naver SpellChecker Workflow for Alfred 4
 # Copyright (c) 2022 Kyeongwon Lee <kwlee1718@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,24 +26,15 @@ import sys
 sys.path.append("lib")
 import re
 from workflow.workflow import Workflow
-from hanspell_break import check
-
-def get_spell_check_data(sent):
-    result = check(sent)
-    r = result.as_dict()
-    return r
+from hanspell_break import get_spell_check_data
 
 def main(wf):
     args = wf.args[0]
 
-    # def wrapper():
-    #     return get_spell_check_data(args)
-
-    # res_json = wf.cached_data(args, wrapper, max_age=600)
     end_mark = re.search('\s+$', args)
     if end_mark:
-        res_json = get_spell_check_data(args)
-        out = f"{res_json['checked']}".rstrip()
+        checked = get_spell_check_data(args)
+        out = checked.rstrip()
 
         wf.add_item(
             title=out,

@@ -1,5 +1,6 @@
 __pycache__
 workflow/lib/*
+*.alfredworkflow
 *.spec
 build
 dist
