@@ -26,7 +26,7 @@ Requirements
 
 * python3
   * [py-hanspell](https://github.com/ssut/py-hanspell.git)
-  * [alfred-workflow-py3](https://github.com/kw-lee/alfred-workflow-py3.git)
+  * [alfred-pyworkflow](https://github.com/harrtho/alfred-pyworkflow.git)
   * requirements.txt
 
 ```bash
@@ -48,3 +48,4 @@ Changelog
 - `v0.0.3`: 공백 문자 입력 강제를 통한 안정성 향상
 - `v0.0.4`: 맞춤법 검사 url 변경
 - `v0.0.5`: 맞춤법 검사 결과 공백문자 제거
+- `v0.0.6`: `passportKey`가 필요한 문제 임시 해결, `python3` 라이브러리 변경

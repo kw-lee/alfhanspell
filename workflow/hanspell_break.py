@@ -9,6 +9,8 @@ import time
 import sys
 from collections import OrderedDict
 import xml.etree.ElementTree as ET
+import re
+from urllib import parse
 
 from workflow import __version__
 from hanspell.response import Checked
@@ -19,6 +21,24 @@ base_url = 'https://m.search.naver.com/p/csearch/ocontent/util/SpellerProxy'
 _agent = requests.Session()
 PY3 = sys.version_info[0] == 3
 
+def read_token():
+    with open("token.txt", "r") as f:
+        TOKEN = f.read()
+    return TOKEN
+
+def update_token(agent):
+    """update passportkey
+    from https://gist.github.com/AcrylicShrimp/4c94db38b7d2c4dd2e832a7d53654e42
+    """
+    
+    html = agent.get(url='https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=맞춤법검사기') 
+
+    match = re.search('passportKey=([a-zA-Z0-9]+)', html.text)
+    if match is not None:
+        TOKEN = parse.unquote(match.group(1))
+        with open("token.txt", "w") as f:
+            f.write(TOKEN)
+    return TOKEN
 
 def _remove_tags(text):
     text = u"<content>{}</content>".format(text).replace("<br>","\n")
@@ -29,6 +49,26 @@ def _remove_tags(text):
 
     return result
 
+def _get_data(text, token):
+    payload = {
+        "_callback": "window.__jindo2_callback._spellingCheck_0",
+        "q": text,
+        "color_blindness": 0,
+        "passportKey": token
+    }
+    headers = {
+        "Host": "m.search.naver.com",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.9 Safari/537.36",
+        "referer": "https://search.naver.com/",
+        "Accept-Language": "ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept": "*/*"
+    }
+    start_time = time.time()
+    r = _agent.get(base_url, params=payload, headers=headers)
+    passed_time = time.time() - start_time
+    r = r.text[42:-2]
+    data = json.loads(r)
+    return passed_time, data
 
 def check(text):
     """
@@ -45,28 +85,13 @@ def check(text):
     if len(text) > 500:
         return Checked(result=False)
 
-    payload = {
-        "_callback": "window.__jindo2_callback._spellingCheck_0",
-        "q": text,
-        "color_blindness": 0
-    }
-
-    headers = {
-        "Host": "m.search.naver.com",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.9 Safari/537.36",
-        "referer": "https://search.naver.com/",
-        "Accept-Language": "ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3",
-        "Accept": "*/*"
-    }
-
-    start_time = time.time()
-    r = _agent.get(base_url, params=payload, headers=headers)
-
-    passed_time = time.time() - start_time
-
-    r = r.text[42:-2]
-
-    data = json.loads(r)
+    TOKEN = read_token()
+    passed_time, data = _get_data(text, TOKEN)
+    if "error" in data["message"].keys():
+        TOKEN = update_token(_agent)
+        passed_time, data = _get_data(text, TOKEN)
+        if "error" in data["message"].keys():
+            return Checked(result=False)
     html = data["message"]["result"]["html"]
     result = {
         "result": True,

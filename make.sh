@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# todo: run workflow without python3
+# todo?: run workflow without python3
 # pyinstaller --additional-hooks-dir=workflow workflow/naver_spellcheck.py
 
 rm -rf ./NaverSC.alfredworkflow
 cd workflow
-rm -rf __pycache__
-zip -r ../NaverSC.alfredworkflow .
+echo "" > TOKEN.txt
+zip -r ../NaverSC.alfredworkflow . -x "__pycache__/*" "**/__pycache__/*"

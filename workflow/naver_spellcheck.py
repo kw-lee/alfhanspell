@@ -25,7 +25,7 @@
 import sys
 sys.path.append("lib")
 import re
-from workflow import Workflow3
+from workflow.workflow import Workflow
 from hanspell_break import check
 
 def get_spell_check_data(sent):
@@ -65,5 +65,5 @@ def main(wf):
         wf.send_feedback()
 
 if __name__ == '__main__':
-    wf = Workflow3()
+    wf = Workflow()
     sys.exit(wf.run(main))
