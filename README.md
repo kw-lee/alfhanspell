@@ -39,6 +39,7 @@ LICENSE
  - MIT
  - except for requests library (Apache License 2.0)
  - 맞춤법 검사 모듈은 [py-hanspell](https://github.com/ssut/py-hanspell.git)을 변형하여 사용하였습니다.
+ - 워크플로우 아이콘은 [@yellowphant](https://github.com/yellowphant)님께서 제작해주셨습니다.
 
 Changelog
 --------------
@@ -50,3 +51,4 @@ Changelog
 - `v0.0.5`: 맞춤법 검사 결과 공백문자 제거
 - `v0.0.6`: `passportKey`가 필요한 문제 임시 해결, `python3` 라이브러리 변경
 - `v0.0.7`: 맞춤법 검사 모듈 경량화, 배포 자동화
+- `v0.0.8`: 아이콘 변경 by [@yellowphant](https://github.com/kw-lee/alfhanspell/issues/2) 
